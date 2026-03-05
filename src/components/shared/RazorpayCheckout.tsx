@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Script from "next/script";
-import { CreditCard, Loader2 } from "lucide-react";
+import { CreditCard, Loader2, CheckCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PRICING, SITE } from "@/lib/constants";
 
@@ -17,6 +17,7 @@ declare global {
 
 export function RazorpayCheckout() {
   const [loading, setLoading] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   const handlePayment = async () => {
     setLoading(true);
@@ -58,9 +59,7 @@ export function RazorpayCheckout() {
           const verifyData = await verifyRes.json();
 
           if (verifyData.success) {
-            alert(
-              "Payment successful! 🎉 Aapka Pro plan activate ho gaya hai. Telegram pe bot use karna shuru karo!"
-            );
+            setPaymentSuccess(true);
           } else {
             alert("Payment verification failed. Please contact support.");
           }
@@ -88,6 +87,30 @@ export function RazorpayCheckout() {
       setLoading(false);
     }
   };
+
+  if (paymentSuccess) {
+    return (
+      <div className="rounded-xl border-2 border-success bg-success/5 p-6 text-center">
+        <CheckCircle className="mx-auto h-12 w-12 text-success" />
+        <h3 className="mt-3 text-lg font-bold text-foreground">
+          Payment successful!
+        </h3>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Yeh raha aapka bot — click karke shuru karo
+        </p>
+        <Button
+          asChild
+          size="lg"
+          className="mt-4 w-full bg-telegram-blue hover:bg-telegram-blue/90 py-6 text-base text-white"
+        >
+          <a href={SITE.telegramBot} target="_blank" rel="noopener noreferrer">
+            <Send className="mr-2 h-5 w-5" />
+            Telegram Bot kholein
+          </a>
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <>

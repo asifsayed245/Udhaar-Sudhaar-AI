@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, Play, Star, MessageSquare, CheckCircle, Clock } from "lucide-react";
+import { CreditCard, Play, Star, MessageSquare, CheckCircle, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/constants";
 
@@ -30,9 +30,9 @@ export function HeroSection() {
                 size="lg"
                 className="bg-saffron hover:bg-saffron-hover text-white text-base px-8 py-6"
               >
-                <a href={SITE.telegramBot} target="_blank" rel="noopener noreferrer">
-                  <Send className="mr-2 h-5 w-5" />
-                  Telegram par shuru karo
+                <a href="#pricing">
+                  <CreditCard className="mr-2 h-5 w-5" />
+                  Subscribe karo
                 </a>
               </Button>
               <Button

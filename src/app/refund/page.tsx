@@ -61,7 +61,7 @@ export default function RefundPage() {
           <p className="mt-2">
             You can cancel your Pro subscription at any time. After cancellation, you will
             retain access to Pro features until the end of your current billing period,
-            after which your account will revert to the Free plan.
+            after which your access will be deactivated until you renew.
           </p>
         </section>
       </div>

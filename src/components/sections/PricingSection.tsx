@@ -1,14 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Send, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Check } from "lucide-react";
 import { PRICING, SITE } from "@/lib/constants";
 import { RazorpayCheckout } from "@/components/shared/RazorpayCheckout";
 
 export function PricingSection() {
-  const plans = [PRICING.free, PRICING.pro];
+  const plan = PRICING.pro;
 
   return (
     <section id="pricing" className="bg-bg-blue py-16 sm:py-24">
@@ -23,78 +21,48 @@ export function PricingSection() {
             Saste mein smart billing
           </h2>
           <p className="mt-3 text-lg text-muted-foreground">
-            Start free, upgrade when ready
+            Smart billing sirf {plan.pricePerDay}
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-12 grid max-w-4xl gap-8 lg:grid-cols-2">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
-              className={`relative rounded-2xl p-8 ${
-                plan.highlighted
-                  ? "border-2 border-saffron bg-white shadow-xl shadow-saffron/10"
-                  : "border bg-white"
-              }`}
-            >
-              {plan.highlighted && (
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-saffron text-white hover:bg-saffron">
-                  <Sparkles className="mr-1 h-3 w-3" />
-                  Most Popular
-                </Badge>
-              )}
+        <div className="mx-auto mt-12 max-w-md">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-2xl border-2 border-saffron bg-white p-8 shadow-xl shadow-saffron/10"
+          >
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">
+                {plan.name}{" "}
+                <span className="text-muted-foreground">({plan.nameHindi})</span>
+              </h3>
 
-              <div>
-                <h3 className="text-lg font-semibold text-foreground">
-                  {plan.name}{" "}
-                  <span className="text-muted-foreground">({plan.nameHindi})</span>
-                </h3>
-
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-foreground">
-                    {plan.priceDisplay}
-                  </span>
-                  <span className="text-muted-foreground">{plan.period}</span>
-                </div>
-
-                {"pricePerDay" in plan && (
-                  <p className="mt-1 text-sm text-saffron font-medium">
-                    Sirf {plan.pricePerDay}!
-                  </p>
-                )}
+              <div className="mt-4 flex items-baseline gap-1">
+                <span className="text-4xl font-bold text-foreground">
+                  {plan.priceDisplay}
+                </span>
+                <span className="text-muted-foreground">{plan.period}</span>
               </div>
 
-              <ul className="mt-8 space-y-3">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-sm">
-                    <Check className="h-5 w-5 shrink-0 text-success" />
-                    <span className="text-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-1 text-sm text-saffron font-medium">
+                Sirf {plan.pricePerDay}!
+              </p>
+            </div>
 
-              <div className="mt-8">
-                {plan.highlighted ? (
-                  <RazorpayCheckout />
-                ) : (
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="w-full py-6 text-base"
-                  >
-                    <a href={SITE.telegramBot} target="_blank" rel="noopener noreferrer">
-                      <Send className="mr-2 h-4 w-4" />
-                      {plan.ctaHindi}
-                    </a>
-                  </Button>
-                )}
-              </div>
-            </motion.div>
-          ))}
+            <ul className="mt-8 space-y-3">
+              {plan.features.map((feature) => (
+                <li key={feature} className="flex items-center gap-3 text-sm">
+                  <Check className="h-5 w-5 shrink-0 text-success" />
+                  <span className="text-foreground">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8">
+              <RazorpayCheckout />
+            </div>
+          </motion.div>
         </div>
 
         {/* Price anchor */}

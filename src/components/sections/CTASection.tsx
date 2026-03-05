@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, MessageCircle } from "lucide-react";
+import { CreditCard, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/constants";
 
@@ -24,7 +24,7 @@ export function CTASection() {
             Aaj hi apni dukaan ko smart banao
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-            Free mein start karo. Credit card ki zaroorat nahi. Sirf Telegram chahiye.
+            Subscribe karo aur apni dukaan ko smart banao. Sirf Telegram chahiye.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -33,9 +33,9 @@ export function CTASection() {
               size="lg"
               className="bg-white text-saffron hover:bg-white/90 px-8 py-6 text-base font-semibold"
             >
-              <a href={SITE.telegramBot} target="_blank" rel="noopener noreferrer">
-                <Send className="mr-2 h-5 w-5" />
-                Telegram par shuru karo
+              <a href="#pricing">
+                <CreditCard className="mr-2 h-5 w-5" />
+                Subscribe karo
               </a>
             </Button>
             {SITE.whatsapp && (

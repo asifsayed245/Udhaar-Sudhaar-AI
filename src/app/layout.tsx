@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Udhaar Sudhaar AI - Smart Billing for Small Business",
     description:
-      "Bill ka photo lo, baaki bot sambhal lega. Free mein try karo.",
+      "Bill ka photo lo, baaki bot sambhal lega. Aaj hi subscribe karo.",
     locale: "en_IN",
     type: "website",
   },

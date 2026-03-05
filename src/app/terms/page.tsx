@@ -33,10 +33,9 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-foreground">4. Free and Paid Plans</h2>
+          <h2 className="text-lg font-semibold text-foreground">4. Subscription Plan</h2>
           <ul className="mt-2 list-disc space-y-1 pl-6">
-            <li>Free plan: Limited to 10 bills per month</li>
-            <li>Pro plan: Rs.549/month for unlimited bills and premium features</li>
+            <li>Pro plan: Rs.549/month for unlimited bills and all features</li>
             <li>Pricing may change with 30 days advance notice</li>
           </ul>
         </section>

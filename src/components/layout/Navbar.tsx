@@ -57,8 +57,8 @@ export function Navbar() {
             asChild
             className="bg-saffron hover:bg-saffron-hover text-white"
           >
-            <a href={SITE.telegramBot} target="_blank" rel="noopener noreferrer">
-              Start Free
+            <a href="#pricing">
+              Subscribe karo
             </a>
           </Button>
         </div>
@@ -87,8 +87,8 @@ export function Navbar() {
                 asChild
                 className="mt-4 bg-saffron hover:bg-saffron-hover text-white"
               >
-                <a href={SITE.telegramBot} target="_blank" rel="noopener noreferrer">
-                  Start Free
+                <a href="#pricing" onClick={() => setOpen(false)}>
+                  Subscribe karo
                 </a>
               </Button>
             </div>

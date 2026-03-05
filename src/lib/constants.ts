@@ -9,22 +9,6 @@ export const SITE = {
 } as const;
 
 export const PRICING = {
-  free: {
-    name: "Free",
-    nameHindi: "Muft",
-    price: 0,
-    priceDisplay: "Rs.0",
-    period: "/month",
-    features: [
-      "10 bills/month",
-      "OCR bill scanning",
-      "Hindi + English support",
-      "Udhaari tracking",
-    ],
-    cta: "Start Free",
-    ctaHindi: "Free mein shuru karo",
-    highlighted: false,
-  },
   pro: {
     name: "Pro",
     nameHindi: "Pro",
