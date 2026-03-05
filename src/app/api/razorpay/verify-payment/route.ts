@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
+import { generateActivationCode, storePayment } from "@/lib/supabase";
+import { PRICING } from "@/lib/constants";
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,11 +27,19 @@ export async function POST(request: NextRequest) {
     const isValid = expectedSignature === razorpay_signature;
 
     if (isValid) {
-      // TODO: Trigger n8n webhook to provision premium access
-      // TODO: Store payment record in Supabase
+      const activationCode = generateActivationCode();
+
+      await storePayment({
+        razorpay_order_id,
+        razorpay_payment_id,
+        amount: PRICING.pro.priceInPaise,
+        activation_code: activationCode,
+      });
+
       return NextResponse.json({
         success: true,
         paymentId: razorpay_payment_id,
+        activationCode,
       });
     }
 
